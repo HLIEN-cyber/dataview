@@ -1,33 +1,30 @@
-# The Wealth & Health of Nations
+# Book Metrics Bubble Chart
 
-https://observablehq.com/@mbostock/the-wealth-health-of-nations@202
+A D3.js visualization showing book metrics in a bubble chart format.
 
-View this notebook in your browser by running a web server in this folder. For
-example:
+## Visualization
+
+This chart displays:
+- **X-axis**: Publication date (YYYY.MM format)
+- **Y-axis**: Number of pages
+- **Bubble size**: Amazon rating (1-5 stars)
+- **Bubble color**: Rating gradient (red to green)
+
+## Running the Visualization
+
+View this visualization in your browser by running a web server in this folder:
 
 ~~~sh
 npx http-server
 ~~~
 
-Or, use the [Observable Runtime](https://github.com/observablehq/runtime) to
-import this module directly into your application. To npm install:
+Then open http://localhost:8080 in your browser.
 
-~~~sh
-npm install @observablehq/runtime@5
-npm install https://api.observablehq.com/@mbostock/the-wealth-health-of-nations@202.tgz?v=3
-~~~
+## Data Source
 
-Then, import your notebook and the runtime as:
-
-~~~js
-import {Runtime, Inspector} from "@observablehq/runtime";
-import define from "@mbostock/the-wealth-health-of-nations";
-~~~
-
-To log the value of the cell named “foo”:
-
-~~~js
-const runtime = new Runtime();
-const main = runtime.module(define);
-main.value("foo").then(value => console.log(value));
-~~~
+The visualization uses data from `books.json`, which contains information about various books including:
+- Title
+- Author
+- Publication date
+- Page count
+- Amazon rating
