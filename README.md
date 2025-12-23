@@ -6,9 +6,11 @@ A D3.js visualization showing book metrics in a bubble chart format.
 
 This chart displays:
 - **X-axis**: Publication date (YYYY.MM format)
-- **Y-axis**: Number of pages
-- **Bubble size**: Amazon rating (1-5 stars)
+- **Y-axis**: Amazon rating (1-5 stars)
+- **Bubble size**: Number of pages
 - **Bubble color**: Rating gradient (red to green)
+
+Hover over any bubble to see the book title and author.
 
 ## Running the Visualization
 
