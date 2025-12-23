@@ -8,6 +8,7 @@ This visualization displays book data with:
 - **X-axis**: Publication date (year.month)
 - **Y-axis**: Amazon rating (1-5 stars)
 - **Bubble size**: Number of pages
+- **Bubble color**: Genre (Romance in pink, Thriller in red, etc.)
 
 Hover over each bubble to see book title and author.`
 )}
@@ -36,8 +37,8 @@ function _chart(d3, width, height, xAxis, yAxis, grid, data, x, y, radius, color
       .attr("cx", d => x(d.publicationDate))
       .attr("cy", d => y(d.rating))
       .attr("r", d => radius(d.pages))
-      .attr("fill", d => color(d.rating))
-      .attr("opacity", 0.7)
+      .attr("fill", d => color(d.genre))
+      .attr("opacity", 0.75)
       .call(circle => circle.append("title")
         .text(d => `${d.title}\n${d.author}`));
 
@@ -67,14 +68,23 @@ function _radius(d3, data)
   const extent = d3.extent(data, d => d.pages);
   return d3.scaleSqrt()
     .domain([0, extent[1]])
-    .range([0, 50]);
+    .range([8, 65]);
 }
 
-function _color(d3)
+function _color(d3, data)
 {
-  return d3.scaleSequential()
-    .domain([3.5, 5])
-    .interpolator(d3.interpolateRgb("#ff9999", "#00cc66"));
+  const genres = Array.from(new Set(data.map(d => d.genre))).sort();
+  const genreColors = {
+    "Romance": "#ff69b4",
+    "Thriller": "#dc143c",
+    "Literary Fiction": "#4169e1",
+    "Contemporary Fiction": "#32cd32",
+    "Science Fiction": "#9370db"
+  };
+
+  return d3.scaleOrdinal()
+    .domain(genres)
+    .range(genres.map(g => genreColors[g] || "#999999"));
 }
 
 function _xAxis(height, margin, d3, x, width)
@@ -155,8 +165,8 @@ async function _data(FileAttachment)
 function _legend(d3, color, radius, data)
 {
   const svg = d3.create("svg")
-    .attr("width", 800)
-    .attr("height", 120)
+    .attr("width", 900)
+    .attr("height", 140)
     .attr("style", "display: block; margin: 20px auto;");
 
   const legend = svg.append("g")
@@ -179,46 +189,46 @@ function _legend(d3, color, radius, data)
 
     g.append("circle")
       .attr("r", radius(pages))
-      .attr("fill", "#4a90e2")
+      .attr("fill", "#999")
       .attr("stroke", "#333")
-      .attr("stroke-width", 1)
-      .attr("opacity", 0.7);
+      .attr("stroke-width", 1.5)
+      .attr("opacity", 0.5);
 
     g.append("text")
-      .attr("y", 50)
+      .attr("y", 55)
       .attr("text-anchor", "middle")
       .attr("font-size", "11px")
       .text(`${pages}`);
   });
 
-  // Color legend for rating
+  // Color legend for genre
   const colorGroup = legend.append("g")
-    .attr("transform", "translate(0, 95)");
+    .attr("transform", "translate(0, 105)");
 
   colorGroup.append("text")
     .attr("x", 0)
     .attr("y", -10)
     .attr("font-size", "12px")
     .attr("font-weight", "bold")
-    .text("Color (Rating):");
+    .text("Color (Genre):");
 
-  const colorScale = [3.9, 4.2, 4.5, 4.8];
-  colorScale.forEach((rating, i) => {
+  const genres = color.domain();
+  genres.forEach((genre, i) => {
     const g = colorGroup.append("g")
-      .attr("transform", `translate(${i * 80 + 100}, 0)`);
+      .attr("transform", `translate(${i * 160 + 10}, 0)`);
 
     g.append("circle")
-      .attr("r", 8)
-      .attr("fill", color(rating))
+      .attr("r", 10)
+      .attr("fill", color(genre))
       .attr("stroke", "#333")
-      .attr("stroke-width", 1)
-      .attr("opacity", 0.7);
+      .attr("stroke-width", 1.5)
+      .attr("opacity", 0.75);
 
     g.append("text")
-      .attr("x", 20)
+      .attr("x", 18)
       .attr("y", 5)
       .attr("font-size", "11px")
-      .text(`${rating}★`);
+      .text(genre);
   });
 
   return svg.node();
@@ -252,7 +262,7 @@ export default function define(runtime, observer) {
   main.variable(observer("x")).define("x", ["d3","data","margin","width"], _x);
   main.variable(observer("y")).define("y", ["d3","data","height","margin"], _y);
   main.variable(observer("radius")).define("radius", ["d3", "data"], _radius);
-  main.variable(observer("color")).define("color", ["d3"], _color);
+  main.variable(observer("color")).define("color", ["d3", "data"], _color);
   main.variable(observer("xAxis")).define("xAxis", ["height","margin","d3","x","width"], _xAxis);
   main.variable(observer("yAxis")).define("yAxis", ["margin","d3","y"], _yAxis);
   main.variable(observer("grid")).define("grid", ["x","margin","height","y","width"], _grid);

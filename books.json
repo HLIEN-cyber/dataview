@@ -4,111 +4,127 @@
     "author": "Andy Weir",
     "publication": "2021.05",
     "pages": 497,
-    "rating": 4.7
+    "rating": 4.7,
+    "genre": "Science Fiction"
   },
   {
     "title": "Tomorrow and Tomorrow and Tomorrow",
     "author": "Gabrielle Zevin",
     "publication": "2022.07",
     "pages": 396,
-    "rating": 4.4
+    "rating": 4.4,
+    "genre": "Literary Fiction"
   },
   {
     "title": "Yellowface",
     "author": "R.F. Kuang",
     "publication": "2023.05",
     "pages": 326,
-    "rating": 3.9
+    "rating": 3.9,
+    "genre": "Thriller"
   },
   {
     "title": "Remarkably Bright Creatures",
     "author": "Shelby Van Pelt",
     "publication": "2022.05",
     "pages": 385,
-    "rating": 4.6
+    "rating": 4.6,
+    "genre": "Contemporary Fiction"
   },
   {
     "title": "Book Lovers",
     "author": "Emily Henry",
     "publication": "2022.05",
     "pages": 398,
-    "rating": 4.4
+    "rating": 4.4,
+    "genre": "Romance"
   },
   {
     "title": "Love on the Brain",
     "author": "Ali Hazelwood",
     "publication": "2022.08",
     "pages": 368,
-    "rating": 4.3
+    "rating": 4.3,
+    "genre": "Romance"
   },
   {
     "title": "Hidden Pictures",
     "author": "Jason Rekulak",
     "publication": "2022.05",
     "pages": 384,
-    "rating": 4.4
+    "rating": 4.4,
+    "genre": "Thriller"
   },
   {
     "title": "Anxious People",
     "author": "Fredrik Backman",
     "publication": "2020.08",
     "pages": 400,
-    "rating": 4.4
+    "rating": 4.4,
+    "genre": "Literary Fiction"
   },
   {
     "title": "The Teacher",
     "author": "Freida McFadden",
     "publication": "2024.02",
     "pages": 402,
-    "rating": 4.3
+    "rating": 4.3,
+    "genre": "Thriller"
   },
   {
     "title": "Margo's Got Money Troubles",
     "author": "Rufi Thorpe",
     "publication": "2024.06",
     "pages": 308,
-    "rating": 4.0
+    "rating": 4.0,
+    "genre": "Contemporary Fiction"
   },
   {
     "title": "The Wedding People",
     "author": "Alison Espach",
     "publication": "2024.08",
     "pages": 369,
-    "rating": 4.3
+    "rating": 4.3,
+    "genre": "Literary Fiction"
   },
   {
     "title": "Eleven Numbers",
     "author": "Lee Child",
     "publication": "2025.02",
     "pages": 50,
-    "rating": 4.2
+    "rating": 4.2,
+    "genre": "Thriller"
   },
   {
     "title": "The Perfect Divorce",
     "author": "Jeneva Rose",
     "publication": "2025.05",
     "pages": 277,
-    "rating": 4.2
+    "rating": 4.2,
+    "genre": "Thriller"
   },
   {
     "title": "The Love Hypothesis",
     "author": "Ali Hazelwood",
     "publication": "2021.09",
     "pages": 383,
-    "rating": 4.5
+    "rating": 4.5,
+    "genre": "Romance"
   },
   {
     "title": "Love, Theoretically",
     "author": "Ali Hazelwood",
     "publication": "2023.06",
     "pages": 400,
-    "rating": 4.4
+    "rating": 4.4,
+    "genre": "Romance"
   },
   {
     "title": "Pineapple Street",
     "author": "Jenny Jackson",
     "publication": "2023.03",
     "pages": 315,
-    "rating": 4.0
+    "rating": 4.0,
+    "genre": "Contemporary Fiction"
   }
 ]
