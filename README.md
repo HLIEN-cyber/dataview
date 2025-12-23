@@ -7,8 +7,13 @@ A D3.js visualization showing book metrics in a bubble chart format.
 This chart displays:
 - **X-axis**: Publication date (YYYY.MM format)
 - **Y-axis**: Amazon rating (1-5 stars)
-- **Bubble size**: Number of pages
-- **Bubble color**: Rating gradient (red to green)
+- **Bubble size**: Number of pages (larger bubbles = longer books)
+- **Bubble color**: Genre categories
+  - Romance: Pink
+  - Thriller: Crimson
+  - Literary Fiction: Royal Blue
+  - Contemporary Fiction: Lime Green
+  - Science Fiction: Medium Purple
 
 Hover over any bubble to see the book title and author.
 
