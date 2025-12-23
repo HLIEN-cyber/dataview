@@ -16,7 +16,8 @@ Hover over each bubble to see book title and author.`
 function _chart(d3, width, height, xAxis, yAxis, grid, data, x, y, radius, color)
 {
   const svg = d3.create("svg")
-      .attr("viewBox", [0, 0, width, height]);
+      .attr("viewBox", [0, 0, width, height])
+      .style("position", "relative");
 
   svg.append("g")
       .call(xAxis);
@@ -26,6 +27,21 @@ function _chart(d3, width, height, xAxis, yAxis, grid, data, x, y, radius, color
 
   svg.append("g")
       .call(grid);
+
+  // Create tooltip div
+  const tooltip = d3.select("body").append("div")
+      .attr("class", "book-tooltip")
+      .style("position", "absolute")
+      .style("visibility", "hidden")
+      .style("background-color", "rgba(0, 0, 0, 0.9)")
+      .style("color", "white")
+      .style("padding", "12px")
+      .style("border-radius", "6px")
+      .style("font-size", "14px")
+      .style("font-family", "sans-serif")
+      .style("pointer-events", "none")
+      .style("z-index", "1000")
+      .style("box-shadow", "0 4px 6px rgba(0,0,0,0.3)");
 
   const circle = svg.append("g")
       .attr("stroke", "#333")
@@ -39,8 +55,28 @@ function _chart(d3, width, height, xAxis, yAxis, grid, data, x, y, radius, color
       .attr("r", d => radius(d.pages))
       .attr("fill", d => color(d.genre))
       .attr("opacity", 0.75)
-      .call(circle => circle.append("title")
-        .text(d => `${d.title}\n${d.author}`));
+      .style("cursor", "pointer")
+      .on("mouseover", function(event, d) {
+        d3.select(this)
+          .attr("opacity", 1)
+          .attr("stroke-width", 3);
+
+        tooltip
+          .html(`<strong>${d.title}</strong><br/>${d.author}`)
+          .style("visibility", "visible");
+      })
+      .on("mousemove", function(event) {
+        tooltip
+          .style("top", (event.pageY - 10) + "px")
+          .style("left", (event.pageX + 10) + "px");
+      })
+      .on("mouseout", function() {
+        d3.select(this)
+          .attr("opacity", 0.75)
+          .attr("stroke-width", 1.5);
+
+        tooltip.style("visibility", "hidden");
+      });
 
   return svg.node();
 }
