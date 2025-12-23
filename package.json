@@ -1,0 +1,14 @@
+{
+  "name": "@mbostock/the-wealth-health-of-nations",
+  "main": "ee2086412849cb2d@202.js",
+  "version": "202.0.0",
+  "homepage": "https://observablehq.com/@mbostock/the-wealth-health-of-nations",
+  "author": {
+    "name": "Mike Bostock",
+    "url": "https://observablehq.com/@mbostock"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
